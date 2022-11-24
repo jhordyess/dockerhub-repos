@@ -1,17 +1,18 @@
-FROM python:3
+FROM ubuntu:20.04
 ARG USER_NAME=jhordyess
 ARG USER_UID=1000
-ARG USER_GID=$USER_UID
+ARG USER_GID=${USER_UID}
+ARG LATINO_PATH_AUX="/home/${USER_NAME}/.latino"
 # Update
 RUN apt-get update --no-install-recommends \
   && apt-get upgrade -y \
   && apt-get autoremove --purge -y
 # Add noon-root user, source: https://code.visualstudio.com/remote/advancedcontainers/add-nonroot-user
-RUN groupadd --gid $USER_GID $USER_NAME \
-  && useradd --uid $USER_UID --gid $USER_GID -m $USER_NAME
+RUN groupadd --gid ${USER_GID} ${USER_NAME} \
+  && useradd --uid ${USER_UID} --gid ${USER_GID} -m ${USER_NAME}
 RUN apt-get install -y sudo \
-  && echo $USER_NAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USER_NAME \
-  && chmod 0440 /etc/sudoers.d/$USER_NAME
+  && echo ${USER_NAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USER_NAME} \
+  && chmod 0440 /etc/sudoers.d/${USER_NAME}
 # Set locale and timezone
 ENV DEBIAN_FRONTEND=noninteractive 
 RUN apt-get install -y locales locales-all tzdata
@@ -20,7 +21,14 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.en
 ENV TZ=America/La_Paz
 #
-RUN apt-get install -y zsh
+RUN apt-get install -y git curl zsh
+# Latino
+#? https://manual.lenguajelatino.org/es/stable/OS/Debian-Ubuntu.html
+RUN apt-get install -y cmake build-essential libreadline-dev libpthread-stubs0-dev
+RUN git clone https://github.com/lenguaje-latino/latino-core ${LATINO_PATH_AUX}
+RUN cmake -S ${LATINO_PATH_AUX} -B ${LATINO_PATH_AUX}
+RUN make -C ${LATINO_PATH_AUX} install
+# -
 USER ${USER_NAME}
 #? https://github.com/deluan/zsh-in-docker
 RUN sh -c "$(curl -L https://github.com/deluan/zsh-in-docker/releases/download/v1.1.2/zsh-in-docker.sh)" -- \
@@ -30,7 +38,3 @@ RUN sh -c "$(curl -L https://github.com/deluan/zsh-in-docker/releases/download/v
 WORKDIR /home/${USER_NAME}
 RUN echo "alias update='sudo apt-get update --no-install-recommends;sudo apt-get upgrade -y;sudo apt-get autoremove --purge -y'" >> ~/.zshrc
 RUN echo "alias nosave='clear;history -c'" >> ~/.zshrc
-# PlatformIO
-#? https://docs.platformio.org/en/latest/core/installation/methods/installer-script.html
-ENV PATH="${PATH}:~/.platformio/penv/bin"
-RUN python3 -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/master/scripts/get-platformio.py)"
