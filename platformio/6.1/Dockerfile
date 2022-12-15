@@ -12,13 +12,6 @@ RUN groupadd --gid $USER_GID $USER_NAME \
 RUN apt-get install -y sudo \
   && echo $USER_NAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USER_NAME \
   && chmod 0440 /etc/sudoers.d/$USER_NAME
-# Set locale and timezone
-ENV DEBIAN_FRONTEND=noninteractive 
-RUN apt-get install -y locales locales-all tzdata
-ENV LC_ALL en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US.en
-ENV TZ=America/La_Paz
 #
 RUN apt-get install -y zsh
 USER ${USER_NAME}
@@ -32,5 +25,6 @@ RUN echo "alias update='sudo apt-get update --no-install-recommends;sudo apt-get
 RUN echo "alias nosave='clear;history -c'" >> ~/.zshrc
 # PlatformIO
 #? https://docs.platformio.org/en/latest/core/installation/methods/installer-script.html
-ENV PATH="${PATH}:~/.platformio/penv/bin"
+ENV PATH="/home/${USER_NAME}/.platformio/penv/bin:${PATH}"
 RUN python3 -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/master/scripts/get-platformio.py)"
+CMD [ "zsh" ]
