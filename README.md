@@ -9,7 +9,7 @@ Tested docker images for VS Code development with Zsh and Oh My Zsh.
 - Odoo v15 <https://hub.docker.com/_/odoo>
 - PlatformIO v6.1 with Python 3 <https://hub.docker.com/_/python/>
 - Texlive small 2022 <https://hub.docker.com/r/texlive/texlive>
-- Ubuntu v20.04 <https://hub.docker.com/_/ubuntu/>
+- Ubuntu v22.04 <https://hub.docker.com/_/ubuntu/>
 
 ---
 Made with 💪 by [Jhordyess](https://www.jhordyess.com/)
