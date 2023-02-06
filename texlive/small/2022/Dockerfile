@@ -20,7 +20,9 @@ ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.en
 #
-RUN apt-get install -y curl zsh
+RUN apt-get install -y curl zsh openssh-client
+RUN tlmgr install latexindent
+RUN sh -c "ln -s /usr/local/texlive/2022/texmf-dist/scripts/latexindent/latexindent.pl /usr/local/bin/latexindent"
 USER ${USER_NAME}
 #? https://github.com/deluan/zsh-in-docker
 RUN sh -c "$(curl -L https://github.com/deluan/zsh-in-docker/releases/download/v1.1.2/zsh-in-docker.sh)" -- \

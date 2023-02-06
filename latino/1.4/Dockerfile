@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 ARG USER_NAME=jhordyess
 ARG USER_UID=1000
 ARG USER_GID=${USER_UID}
