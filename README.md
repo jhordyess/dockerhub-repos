@@ -11,7 +11,7 @@ All images are also published on [Docker Hub](https://hub.docker.com/).
 Image | Version* | Docker Hub | Build script | Official image | Comments
 -|-|-|-|-|-
  Ubuntu | 22.04 | [jhordyess/ubuntu](https://hub.docker.com/r/jhordyess/ubuntu) | [Dockerfile](./ubuntu/Dockerfile) | [Ubuntu](https://hub.docker.com/_/ubuntu/)
- NodeJS | 16 | [jhordyess/node](https://hub.docker.com/r/jhordyess/node) | [Dockerfile](./node/16/Dockerfile) | [Node](https://hub.docker.com/_/node)
+ NodeJS | 16 | [jhordyess/node](https://hub.docker.com/r/jhordyess/node) | [Dockerfile](./node/Dockerfile) | [Node](https://hub.docker.com/_/node)
  Tex Live | 2022 | [jhordyess/texlive](https://hub.docker.com/r/jhordyess/texlive) | [Dockerfile](./texlive/small/2022/Dockerfile) | [Tex Live](https://hub.docker.com/r/texlive/texlive) | Using the small tag
  PlatformIO | 6.1 | [jhordyess/platformio](https://hub.docker.com/r/jhordyess/platformio) | [Dockerfile](./platformio/6.1/Dockerfile) | | Using [Python image](https://hub.docker.com/_/python)
  Lenguaje latino | 1.4 | [jhordyess/latino](https://hub.docker.com/r/jhordyess/latino) | [Dockerfile](./latino/1.4/Dockerfile) | | Using [Ubuntu image](https://hub.docker.com/_/ubuntu/)
