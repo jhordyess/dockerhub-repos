@@ -24,10 +24,8 @@ Image | Version* | Docker Hub | Build script | Official image | Comments
 
 ## To-Do
 
-- Add examples or uses cases for usage with `devcontainer.json`.
-- NodeJS replace `node` user for `jhordyess` 🤔.
-- Delete `update` `clean` aliases for zsh.
-- Delete unnecessary locale and timezone statements.
+- Add examples for to use with `deuservcontainer.json`.
+- NodeJS, change non-root user `node` to `jhordyess`.
 - Add more to-do's 😏.
 
 ## Contribution
