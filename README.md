@@ -24,7 +24,7 @@ Image | Version* | Docker Hub | Build script | Official image | Comments
 
 ## To-Do
 
-- Add examples for to use with `deuservcontainer.json`.
+- Add examples using `devcontainer.json` files.
 - NodeJS, change non-root user `node` to `jhordyess`.
 - Add more to-do's 😏.
 
