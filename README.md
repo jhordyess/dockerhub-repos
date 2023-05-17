@@ -12,9 +12,10 @@ Image | Version* | Docker Hub | Build script | Official image | Comments
 -|-|-|-|-|-
  Ubuntu | 22.04 | [jhordyess/ubuntu](https://hub.docker.com/r/jhordyess/ubuntu) | [Dockerfile](./ubuntu/Dockerfile) | [Ubuntu](https://hub.docker.com/_/ubuntu/)
  NodeJS | 16 | [jhordyess/node](https://hub.docker.com/r/jhordyess/node) | [Dockerfile](./node/Dockerfile) | [Node](https://hub.docker.com/_/node)
- Tex Live | 2022 | [jhordyess/texlive](https://hub.docker.com/r/jhordyess/texlive) | [Dockerfile](./texlive/small/Dockerfile) | [Tex Live](https://hub.docker.com/r/texlive/texlive) | Using the small tag
- PlatformIO | 6.1 | [jhordyess/platformio](https://hub.docker.com/r/jhordyess/platformio) | [Dockerfile](./platformio/Dockerfile) | | Using [Python image](https://hub.docker.com/_/python)
- Lenguaje latino | 1.4 | [jhordyess/latino](https://hub.docker.com/r/jhordyess/latino) | [Dockerfile](./latino/Dockerfile) | | Using [Ubuntu image](https://hub.docker.com/_/ubuntu/)
+ Java & Maven | 17 & 3| [jhordyess/java](https://hub.docker.com/r/jhordyess/latino) | [Dockerfile](./java/Dockerfile) | [Maven](https://hub.docker.com/_/maven/) | Using the Eclipse Temurin  distribution
+ Tex Live | 2023 | [jhordyess/texlive](https://hub.docker.com/r/jhordyess/texlive) | [Dockerfile](./texlive/small/Dockerfile) | [Tex Live](https://hub.docker.com/r/texlive/texlive) | Using the small tag
+ PlatformIO | 6.1 | [jhordyess/platformio](https://hub.docker.com/r/jhordyess/platformio) | [Dockerfile](./platformio/Dockerfile) | | Using the [Python image](https://hub.docker.com/_/python)
+ Lenguaje latino | 1.4 | [jhordyess/latino](https://hub.docker.com/r/jhordyess/latino) | [Dockerfile](./latino/Dockerfile) | | Using the [Ubuntu image](https://hub.docker.com/_/ubuntu/)
 
 ### Notes
 
