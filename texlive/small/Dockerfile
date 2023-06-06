@@ -20,9 +20,10 @@ RUN groupadd --gid $USER_GID $USER_NAME && \
   echo $USER_NAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USER_NAME && \
   chmod 0440 /etc/sudoers.d/$USER_NAME
 
-# Install latexindent and link it to /usr/local/bin
-RUN tlmgr install latexindent
-RUN sh -c "ln -s /usr/local/texlive/2022/texmf-dist/scripts/latexindent/latexindent.pl /usr/local/bin/latexindent"
+# Install latexindent, latexmkand and link them to /usr/local/bin
+RUN tlmgr install latexindent latexmk
+RUN sh -c "ln -s /usr/local/texlive/2023/texmf-dist/scripts/latexindent/latexindent.pl /usr/local/bin/latexindent"
+RUN sh -c "ln -s /usr/local/texlive/2023/texmf-dist/scripts/latexmk/latexmk.pl /usr/local/bin/latexmk"
 
 # Switch to non-root user
 USER ${USER_NAME}
