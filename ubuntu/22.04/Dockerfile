@@ -4,8 +4,8 @@
 # Docker Hub: https://hub.docker.com/r/jhordyess/ubuntu
 # All sources were reviewed on September 7, 2023
 
-# Use the latest Ubuntu base image
-FROM ubuntu:latest
+# Use the Ubuntu 22.04 base image
+FROM ubuntu:22.04
 
 # Define arguments for user configuration
 ARG USER_NAME=jhordyess

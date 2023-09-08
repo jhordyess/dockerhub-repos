@@ -4,7 +4,7 @@
 # Docker Hub: https://hub.docker.com/r/jhordyess/node
 # All sources were reviewed on September 7, 2023
 
-# Use the latest Node 18 base image
+# Use the Node 18 base image
 FROM node:18
 
 # Define arguments for user configuration

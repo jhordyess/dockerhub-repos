@@ -1,11 +1,11 @@
 # Dockerfile for development purposes in VSCode
-# Image: PlatformIO Core 6.1 with Python, Git, Zsh, and Oh My Zsh; default user: jhordyess
+# Image: Java 17 with Maven 3, Git, Zsh and Oh My Zsh; default user: jhordyess
 # Author: Jhordy Gavinchu
-# Docker Hub: https://hub.docker.com/r/jhordyess/platformio
+# Docker Hub: https://hub.docker.com/r/jhordyess/java
 # All sources were reviewed on September 7, 2023
 
-# Use the latest Python base image
-FROM python:latest
+# Use the Maven 3 with Java 17 base image from Eclipse Temurin distribution
+FROM maven:3-eclipse-temurin-17
 
 # Define arguments for user configuration
 ARG USER_NAME=jhordyess
@@ -37,15 +37,8 @@ RUN sh -c "$(curl -L https://github.com/deluan/zsh-in-docker/releases/download/v
   -p https://github.com/zsh-users/zsh-syntax-highlighting \
   -p https://github.com/zsh-users/zsh-autosuggestions
 
-# Install PlatformIO and add it to the PATH
-# Source: https://docs.platformio.org/en/latest/core/installation/methods/installer-script.html#super-quick-macos-linux
-ENV PATH="/home/${USER_NAME}/.platformio/penv/bin:${PATH}"
-RUN curl -fsSL -o /home/${USER_NAME}/get-platformio.py 'https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py' && \
-  python3 /home/${USER_NAME}/get-platformio.py && \
-  rm /home/${USER_NAME}/get-platformio.py
-
 # Set the default working directory
 WORKDIR /home/${USER_NAME}
 
-# Set the default command to launch PlatformIO
-CMD [ "pio" ]
+# Set the default command to launch Java Shell
+CMD [ "jshell" ]
