@@ -1,12 +1,23 @@
 # My docker hub images
 
-Basic docker images for VS Code Dev Containers with Zsh and Git.
+Welcome to my collection of Docker images tailored for [Visual Studio Code Development Containers](https://code.visualstudio.com/docs/devcontainers/containers). These images are equipped with essential tools like **Zsh**, **Git**, and a non-root user named `jhordyess`.
+
+Whether you're a seasoned developer or just starting with Dev Containers, these images aim to simplify your workflow.
 
 ## Description
 
-These images are designed to facilitate the development of applications with [Visual Studio Code Development Containers](https://code.visualstudio.com/docs/devcontainers/containers). They include [Zsh](https://www.zsh.org/) (with [Oh My Zsh](https://ohmyz.sh/)), [Git](https://git-scm.com/), and one non-root user called `jhordyess` 🤔.
+Each image includes the following components:
 
-All images are also published on [Docker Hub](https://hub.docker.com/).
+- [Zsh](https://www.zsh.org/): A powerful and user-friendly shell.
+- [Oh My Zsh](https://ohmyz.sh/): A delightful community-driven framework for managing Zsh configurations.
+- [Git](https://git-scm.com/): An industry-standard version control system.
+- Non-root User: The images come with a non-root user named `jhordyess` to enhance security and manage permissions effectively.
+
+You can find all these images conveniently hosted on [Docker Hub](https://hub.docker.com/).
+
+## Images
+
+Here's a quick reference to the available images:
 
 Image | Version* | Docker Hub | Build script | Official image | Comments
 -|-|-|-|-|-
@@ -21,12 +32,11 @@ Image | Version* | Docker Hub | Build script | Official image | Comments
 
 - All versions refers at commit time, except NodeJS that use 18 version.
 - PlatformIO and Lenguaje latino use their correspondents installation scripts.
-- NodeJS uses `node` as the one non-root user.
 
 ## To-Do
 
 - Add examples using `devcontainer.json` files.
-- NodeJS, change non-root user `node` to `jhordyess`.
+- Translate README.
 - Add more to-do's 😏.
 
 ## Contribution
@@ -35,7 +45,7 @@ If you would like to contribute to the project, open an issue or make a pull req
 
 ## License
 
-© 2022> [Jhordyess](https://github.com/jhordyess). Under the [MIT](https://choosealicense.com/licenses/mit/) license. See the LICENSE file for more details.
+© 2022> [Jhordyess](https://github.com/jhordyess). Under the [MIT](https://choosealicense.com/licenses/mit/) license. See the [LICENSE](./LICENSE) file for more details.
 
 ---
 
