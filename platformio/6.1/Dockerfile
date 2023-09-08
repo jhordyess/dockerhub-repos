@@ -1,4 +1,4 @@
-FROM python:latest
+FROM python:3
 
 # Define arguments
 ARG USER_NAME=jhordyess
