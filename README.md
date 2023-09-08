@@ -6,22 +6,32 @@ Basic docker images for VS Code Dev Containers with Zsh and Git.
 
 These images are designed to facilitate the development of applications with [Visual Studio Code Development Containers](https://code.visualstudio.com/docs/devcontainers/containers). They include [Zsh](https://www.zsh.org/) (with [Oh My Zsh](https://ohmyz.sh/)), [Git](https://git-scm.com/), and one non-root user called `jhordyess` 🤔.
 
-All images are also published on [Docker Hub](https://hub.docker.com/).
+All images are also published on my [Docker Hub Profile](https://hub.docker.com/r/jhordyess).
 
-Image | Version* | Docker Hub | Build script | Official image | Comments
--|-|-|-|-|-
- Ubuntu | 22.04 | [jhordyess/ubuntu](https://hub.docker.com/r/jhordyess/ubuntu) | [Dockerfile](./ubuntu/Dockerfile) | [Ubuntu](https://hub.docker.com/_/ubuntu/)
- NodeJS | 18 | [jhordyess/node](https://hub.docker.com/r/jhordyess/node) | [Dockerfile](./node/Dockerfile) | [Node](https://hub.docker.com/_/node)
- Java & Maven | 17 & 3| [jhordyess/java](https://hub.docker.com/r/jhordyess/latino) | [Dockerfile](./java/Dockerfile) | [Maven](https://hub.docker.com/_/maven/) | Using the Eclipse Temurin  distribution
- Tex Live | 2023 | [jhordyess/texlive](https://hub.docker.com/r/jhordyess/texlive) | [Dockerfile](./texlive/small/Dockerfile) | [Tex Live](https://hub.docker.com/r/texlive/texlive) | Using the small tag
- PlatformIO | 6.1 | [jhordyess/platformio](https://hub.docker.com/r/jhordyess/platformio) | [Dockerfile](./platformio/Dockerfile) | | Using the [Python image](https://hub.docker.com/_/python)
- Lenguaje latino | 1.4 | [jhordyess/latino](https://hub.docker.com/r/jhordyess/latino) | [Dockerfile](./latino/Dockerfile) | | Using the [Ubuntu image](https://hub.docker.com/_/ubuntu/)
+## Usage
 
-### Notes
+To use these images, you must have [Docker](https://www.docker.com/) installed on your computer. Then, you can use the following command to download the image:
 
-- All versions refers at commit time, except NodeJS that use 18 version.
-- PlatformIO and Lenguaje latino use their correspondents installation scripts.
-- NodeJS uses `node` as the one non-root user.
+```bash
+docker pull jhordyess/<image>:<version>
+```
+
+For example, to download the Ubuntu 22.04 image, you can use the following command:
+
+```bash
+docker pull jhordyess/ubuntu:22.04
+```
+
+## Images
+
+Image | Tags | Dockerfile | Info
+-|-|-|-
+[jhordyess/java](https://hub.docker.com/r/jhordyess/java) | `latest`, `17-3` | [Dockerfile](./java/17-3/Dockerfile) | Based on [Maven](https://hub.docker.com/_/maven/) 3 with Java 17 using the Eclipse Temurin distribution
+[jhordyess/latino](https://hub.docker.com/r/jhordyess/latino) | `latest`, `1.4` | [Dockerfile](./latino/1.4/Dockerfile) | Based on [Ubuntu](https://hub.docker.com/_/ubuntu/) 22.04 and using the Lenguaje latino installation script
+[jhordyess/node](https://hub.docker.com/r/jhordyess/node) | `latest`, `18` | [Dockerfile](./node/18/Dockerfile) | Based on [Node](https://hub.docker.com/_/node) 18
+[jhordyess/platformio](https://hub.docker.com/r/jhordyess/platformio) | `latest`, `6.1` | [Dockerfile](./platformio/6.1/Dockerfile) | Based on [Python](https://hub.docker.com/_/python) 3 and using the PlatformIO installation script
+[jhordyess/texlive](https://hub.docker.com/r/jhordyess/texlive) | `latest`, `2023-small` | [Dockerfile](./texlive/2023-small/Dockerfile) | Based on the latest [Tex Live](https://hub.docker.com/r/texlive/texlive) and using the small tag
+[jhordyess/ubuntu](https://hub.docker.com/r/jhordyess/ubuntu) | `latest`, `22.04` | [Dockerfile](./ubuntu/22.04/Dockerfile) | Based on [Ubuntu](https://hub.docker.com/_/ubuntu/) 22.04
 
 ## To-Do
 
