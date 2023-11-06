@@ -2,7 +2,7 @@
 # Image: PlatformIO Core 6.1 with Python, Git, Zsh, and Oh My Zsh; default user: jhordyess
 # Author: Jhordy Gavinchu
 # Docker Hub: https://hub.docker.com/r/jhordyess/platformio
-# All sources were reviewed on September 7, 2023
+# All sources were reviewed on November 6, 2023
 
 # Use the Python 3 base image
 FROM python:3

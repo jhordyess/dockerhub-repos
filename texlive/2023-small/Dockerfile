@@ -2,7 +2,7 @@
 # Image: TexLive 2023 (small) with Git, Zsh and Oh My Zsh; default user: jhordyess
 # Author: Jhordy Gavinchu
 # Docker Hub: https://hub.docker.com/r/jhordyess/texlive
-# All sources were reviewed on September 7, 2023
+# All sources were reviewed on November 6, 2023
 
 # Use the latest TexLive 2023 (small) base image
 FROM texlive/texlive:latest-small

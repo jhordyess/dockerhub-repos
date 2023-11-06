@@ -2,7 +2,7 @@
 # Image: Java 17 with Maven 3, Git, Zsh and Oh My Zsh; default user: jhordyess
 # Author: Jhordy Gavinchu
 # Docker Hub: https://hub.docker.com/r/jhordyess/java
-# All sources were reviewed on September 7, 2023
+# All sources were reviewed on November 6, 2023
 
 # Use the Maven 3 with Java 17 base image from Eclipse Temurin distribution
 FROM maven:3-eclipse-temurin-17

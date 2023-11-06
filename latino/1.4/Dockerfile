@@ -2,7 +2,7 @@
 # Image: Lenguaje Latino 1.4 core with Git, Zsh and Oh My Zsh; default user: jhordyess
 # Author: Jhordy Gavinchu
 # Docker Hub: https://hub.docker.com/r/jhordyess/latino
-# All sources were reviewed on September 7, 2023
+# All sources were reviewed on November 6, 2023
 
 # Use the Ubuntu 22.04 base image
 FROM ubuntu:22.04
