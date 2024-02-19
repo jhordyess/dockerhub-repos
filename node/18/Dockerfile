@@ -2,7 +2,7 @@
 # Image: Node 18 with Git, Zsh and Oh My Zsh; default user: jhordyess
 # Author: Jhordy Gavinchu
 # Docker Hub: https://hub.docker.com/r/jhordyess/node
-# All sources were reviewed on November 6, 2023
+# All sources were reviewed on February 19, 2024
 
 # Use the Node 18 base image
 FROM node:18
