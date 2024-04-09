@@ -7,7 +7,7 @@ repositories=(
   "latino,1.4"
   "node,18"
   "platformio,6.1"
-  "texlive,2023-small"
+  "texlive,2024-small"
   "ubuntu,22.04"
 )
 
