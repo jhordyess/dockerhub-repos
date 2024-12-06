@@ -18,7 +18,7 @@ RUN apt-get update --no-install-recommends && \
   apt-get autoremove --purge -y && \ 
   apt-get install -y sudo && \
   # Install Oh My Zsh dependencies
-  apt-get install -y zsh openssh-client
+  apt-get install -y git wget zsh
 
 # Add a non-root user and grant sudo privileges
 # Source: https://code.visualstudio.com/remote/advancedcontainers/add-nonroot-user#_creating-a-nonroot-user
@@ -38,7 +38,7 @@ USER ${USER_NAME}
 
 # Install Zsh and plugins
 # Source: https://github.com/deluan/zsh-in-docker#examples
-RUN sh -c "$(curl -L https://github.com/deluan/zsh-in-docker/releases/download/v1.2.1/zsh-in-docker.sh)" -- \
+RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.2.1/zsh-in-docker.sh)" -- \
   -p git \
   -p https://github.com/zsh-users/zsh-syntax-highlighting \
   -p https://github.com/zsh-users/zsh-autosuggestions
