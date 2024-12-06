@@ -2,11 +2,16 @@ pipeline {
   agent any
 
   environment {
-    REPOSITORIES_JSON = '[{"name": "java", "version": "17-3"}, {"name": "latino", "version": "1.4"}, {"name": "node", "version": "18"}, {"name": "platformio", "version": "6.1"}, {"name": "texlive", "version": "2024-small"}, {"name": "ubuntu", "version": "22.04"}]',
+    REPOSITORIES_JSON = '[{"name": "java", "version": "17-3"}, {"name": "latino", "version": "1.4"}, {"name": "node", "version": "22"}, {"name": "platformio", "version": "6.1"}, {"name": "texlive", "version": "2024-small"}, {"name": "ubuntu", "version": "24.04"}]',
     DOCKER_PREFIX = credentials('docker-prefix')
   }
 
   stages {
+    stage('Checkout') {
+      steps {
+        checkout scm
+      }
+    }
     stage('Build Docker Images') {
       steps {
         script {
