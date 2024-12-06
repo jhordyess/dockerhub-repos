@@ -2,9 +2,9 @@
 # Image: TexLive 2024 (small) with Git, Zsh and Oh My Zsh; default user: jhordyess
 # Author: Jhordy Gavinchu
 # Docker Hub: https://hub.docker.com/r/jhordyess/texlive
-# All sources were reviewed on February 19, 2024
+# All sources were reviewed on December 6, 2024
 
-# Use the latest TexLive 2023 (small) base image
+# Use the latest TexLive 2024 (small) base image
 FROM texlive/texlive:latest-small
 
 # Define arguments for user configuration
@@ -30,15 +30,15 @@ RUN groupadd --gid $USER_GID $USER_NAME && \
 # Install latexindent and latexmk for use with the VSCode LaTeX Workshop extension.
 # Create symbolic links to make them available in /usr/local/bin
 RUN tlmgr install latexindent latexmk && \
-  ln -s /usr/local/texlive/2023/texmf-dist/scripts/latexindent/latexindent.pl /usr/local/bin/latexindent && \
-  ln -s /usr/local/texlive/2023/texmf-dist/scripts/latexmk/latexmk.pl /usr/local/bin/latexmk
+  ln -s /usr/local/texlive/2024/texmf-dist/scripts/latexindent/latexindent.pl /usr/local/bin/latexindent && \
+  ln -s /usr/local/texlive/2024/texmf-dist/scripts/latexmk/latexmk.pl /usr/local/bin/latexmk
 
 # Switch to the non-root user
 USER ${USER_NAME}
 
 # Install Zsh and plugins
 # Source: https://github.com/deluan/zsh-in-docker#examples
-RUN sh -c "$(curl -L https://github.com/deluan/zsh-in-docker/releases/download/v1.1.5/zsh-in-docker.sh)" -- \
+RUN sh -c "$(curl -L https://github.com/deluan/zsh-in-docker/releases/download/v1.2.1/zsh-in-docker.sh)" -- \
   -p git \
   -p https://github.com/zsh-users/zsh-syntax-highlighting \
   -p https://github.com/zsh-users/zsh-autosuggestions
