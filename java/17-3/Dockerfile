@@ -2,9 +2,9 @@
 # Image: Java 17 with Maven 3, Git, Zsh and Oh My Zsh; default user: jhordyess
 # Author: Jhordy Gavinchu
 # Docker Hub: https://hub.docker.com/r/jhordyess/java
-# All sources were reviewed on February 19, 2024
+# All sources were reviewed on December 6, 2024
 
-# Use the Maven 3 with Java 17 base image from Eclipse Temurin distribution
+# Use the Maven 3 with Java 17 base image from Eclipse Temurin
 FROM maven:3-eclipse-temurin-17
 
 # Define arguments for user configuration
@@ -32,7 +32,7 @@ USER ${USER_NAME}
 
 # Install Zsh and plugins
 # Source: https://github.com/deluan/zsh-in-docker#examples
-RUN sh -c "$(curl -L https://github.com/deluan/zsh-in-docker/releases/download/v1.1.5/zsh-in-docker.sh)" -- \
+RUN sh -c "$(curl -L https://github.com/deluan/zsh-in-docker/releases/download/v1.2.1/zsh-in-docker.sh)" -- \
   -p git \
   -p https://github.com/zsh-users/zsh-syntax-highlighting \
   -p https://github.com/zsh-users/zsh-autosuggestions
