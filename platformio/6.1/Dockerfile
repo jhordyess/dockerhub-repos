@@ -2,7 +2,7 @@
 # Image: PlatformIO Core 6.1 with Python, Git, Zsh, and Oh My Zsh; default user: jhordyess
 # Author: Jhordy Gavinchu
 # Docker Hub: https://hub.docker.com/r/jhordyess/platformio
-# All sources were reviewed on February 19, 2024
+# All sources were reviewed on December 6, 2024
 
 # Use the Python 3 base image
 FROM python:3
@@ -18,7 +18,7 @@ RUN apt-get update --no-install-recommends && \
   apt-get autoremove --purge -y && \ 
   apt-get install -y sudo && \
   # Install Oh My Zsh dependencies
-  apt-get install -y zsh
+  apt-get install -y git wget zsh
 
 # Add a non-root user and grant sudo privileges
 # Source: https://code.visualstudio.com/remote/advancedcontainers/add-nonroot-user#_creating-a-nonroot-user
@@ -32,7 +32,7 @@ USER ${USER_NAME}
 
 # Install Zsh and plugins
 # Source: https://github.com/deluan/zsh-in-docker#examples
-RUN sh -c "$(curl -L https://github.com/deluan/zsh-in-docker/releases/download/v1.1.5/zsh-in-docker.sh)" -- \
+RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.2.1/zsh-in-docker.sh)" -- \
   -p git \
   -p https://github.com/zsh-users/zsh-syntax-highlighting \
   -p https://github.com/zsh-users/zsh-autosuggestions
@@ -40,7 +40,7 @@ RUN sh -c "$(curl -L https://github.com/deluan/zsh-in-docker/releases/download/v
 # Install PlatformIO and add it to the PATH
 # Source: https://docs.platformio.org/en/latest/core/installation/methods/installer-script.html#super-quick-macos-linux
 ENV PATH="/home/${USER_NAME}/.platformio/penv/bin:${PATH}"
-RUN curl -fsSL -o /home/${USER_NAME}/get-platformio.py 'https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py' && \
+RUN wget -O /home/${USER_NAME}/get-platformio.py 'https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py' && \
   python3 /home/${USER_NAME}/get-platformio.py && \
   rm /home/${USER_NAME}/get-platformio.py
 
