@@ -5,10 +5,10 @@ read -p "Input  your username: " username
 repositories=(
   "java,17-3"
   "latino,1.4"
-  "node,18"
+  "node,22"
   "platformio,6.1"
   "texlive,2024-small"
-  "ubuntu,22.04"
+  "ubuntu,24.04"
 )
 
 for repo in "${repositories[@]}"; do
