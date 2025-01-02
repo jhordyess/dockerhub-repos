@@ -18,7 +18,9 @@ RUN apt-get update --no-install-recommends && \
   apt-get autoremove --purge -y && \ 
   apt-get install -y sudo && \
   # Install Oh My Zsh dependencies
-  apt-get install -y git wget zsh
+  apt-get install -y git wget zsh \ 
+  # Install SSH client to support remote git repositories
+  openssh-client
 
 # Add a non-root user and grant sudo privileges
 # Source: https://code.visualstudio.com/remote/advancedcontainers/add-nonroot-user#_creating-a-nonroot-user
