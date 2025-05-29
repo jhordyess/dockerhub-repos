@@ -1,4 +1,4 @@
-#! Not longer maintained, last update was: January 2023
+#! No longer maintained, last update was: January 2023
 
 FROM odoo:15
 ARG USER_NAME=jhordyess

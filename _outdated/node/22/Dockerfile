@@ -1,3 +1,5 @@
+#! No longer maintained, last update was: December, 2024
+
 # Dockerfile for development purposes in VSCode
 # Image: Node 22 with Git, Zsh and Oh My Zsh; default user: jhordyess
 # Author: Jhordy Gavinchu
