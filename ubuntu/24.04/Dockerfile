@@ -1,8 +1,8 @@
 # Dockerfile for development purposes in VSCode
-# Image: Ubuntu 24.04 with Git, Zsh, and Oh My Zsh; default user: jhordyess
+# Image: Ubuntu 24.04 (Noble Numbat) with Git, Zsh, and Oh My Zsh; default user: jhordyess
 # Author: Jhordy Gavinchu
 # Docker Hub: https://hub.docker.com/r/jhordyess/ubuntu
-# All sources were reviewed on December 6, 2024
+# All sources were reviewed on May 29, 2025
 
 # Use the Ubuntu 24.04 base image
 FROM ubuntu:24.04
