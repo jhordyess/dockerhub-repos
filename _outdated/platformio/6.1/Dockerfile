@@ -1,3 +1,5 @@
+#! No longer maintained, last update was: December, 2024
+
 # Dockerfile for development purposes in VSCode
 # Image: PlatformIO Core 6.1 with Python, Git, Zsh, and Oh My Zsh; default user: jhordyess
 # Author: Jhordy Gavinchu
