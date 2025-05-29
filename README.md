@@ -23,21 +23,18 @@ To use these images, you must have [Docker](https://www.docker.com/) installed o
 docker pull jhordyess/<image>:<version>
 ```
 
-For example, to download the Ubuntu 22.04 image, you can use the following command:
+For example, to download the Ubuntu 24.04 image, you can use the following command:
 
 ```bash
-docker pull jhordyess/ubuntu:22.04
+docker pull jhordyess/ubuntu:24.04
 ```
 
 ## Images
 
 Image | Tags | Dockerfile | Info
 -|-|-|-
-[jhordyess/java](https://hub.docker.com/r/jhordyess/java) | `latest`, `17-3` | [Dockerfile](./java/17-3/Dockerfile) | Based on [Maven](https://hub.docker.com/_/maven/) 3 with Java 17 using the Eclipse Temurin distribution
-[jhordyess/latino](https://hub.docker.com/r/jhordyess/latino) | `latest`, `1.4` | [Dockerfile](./latino/1.4/Dockerfile) | Based on [Ubuntu](https://hub.docker.com/_/ubuntu/) 22.04 and using the Lenguaje latino installation script
-[jhordyess/node](https://hub.docker.com/r/jhordyess/node) | `latest`, `22` | [Dockerfile](./node/22/Dockerfile) | Based on [Node](https://hub.docker.com/_/node) 22
-[jhordyess/platformio](https://hub.docker.com/r/jhordyess/platformio) | `latest`, `6.1` | [Dockerfile](./platformio/6.1/Dockerfile) | Based on [Python](https://hub.docker.com/_/python) 3 and using the PlatformIO installation script
-[jhordyess/texlive](https://hub.docker.com/r/jhordyess/texlive) | `latest`, `2024-small` | [Dockerfile](./texlive/2024-small/Dockerfile) | Based on the latest [Tex Live](https://hub.docker.com/r/texlive/texlive) and using the small tag
+[jhordyess/java](https://hub.docker.com/r/jhordyess/java) | `latest`, `21-3` | [Dockerfile](./java/21-3/Dockerfile) | Based on [Maven](https://hub.docker.com/_/maven/) 3 with Java 21 using the Eclipse Temurin distribution
+[jhordyess/texlive](https://hub.docker.com/r/jhordyess/texlive) | `latest`, `2025-small` | [Dockerfile](./texlive/2025-small/Dockerfile) | Based on the latest [Tex Live](https://hub.docker.com/r/texlive/texlive) and using the small tag
 [jhordyess/ubuntu](https://hub.docker.com/r/jhordyess/ubuntu) | `latest`, `24.04` | [Dockerfile](./ubuntu/24.04/Dockerfile) | Based on [Ubuntu](https://hub.docker.com/_/ubuntu/) 24.04
 
 ## To-Do
@@ -51,7 +48,7 @@ If you would like to contribute to the project, open an issue or make a pull req
 
 ## License
 
-© 2022> [Jhordyess](https://github.com/jhordyess). Under the [MIT](https://choosealicense.com/licenses/mit/) license. See the [LICENSE](./LICENSE) file for more details.
+© 2022-2025 [Jhordyess](https://github.com/jhordyess). Under the [MIT](https://choosealicense.com/licenses/mit/) license. See the [LICENSE](./LICENSE) file for more details.
 
 ---
 
