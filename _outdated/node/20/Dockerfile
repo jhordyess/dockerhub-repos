@@ -1,3 +1,5 @@
+#! No longer maintained, last update was: February, 2024
+
 # Dockerfile for development purposes in VSCode
 # Image: Node 18 with Git, Zsh and Oh My Zsh; default user: jhordyess
 # Author: Jhordy Gavinchu
@@ -5,7 +7,7 @@
 # All sources were reviewed on February 19, 2024
 
 # Use the Node 18 base image
-FROM node:18
+FROM node:20
 
 # Define arguments for user configuration
 ARG DEFAULT_USER_NAME=node

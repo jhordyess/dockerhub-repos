@@ -1,11 +1,8 @@
 $username = Read-Host "Input your username"
 
 $repositories = @(
-  "java,17-3",
-  "latino,1.4",
-  "node,22",
-  "platformio,6.1",
-  "texlive,2024-small",
+  "java,21-3",
+  "texlive,2025-small",
   "ubuntu,24.04"
 )
 

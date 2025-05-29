@@ -1,3 +1,5 @@
+#! No longer maintained, last update was: December, 2024
+
 # Dockerfile for development purposes in VSCode
 # Image: Java 17 with Maven 3, Git, Zsh and Oh My Zsh; default user: jhordyess
 # Author: Jhordy Gavinchu
