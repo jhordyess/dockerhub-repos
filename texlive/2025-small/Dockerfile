@@ -5,6 +5,7 @@
 # All sources were reviewed on May 30, 2025
 
 # Use the latest TexLive 2025 (small) base image
+# Uses Debian 13 as the top-level base image
 FROM texlive/texlive:latest-small
 
 # Define arguments for user configuration
