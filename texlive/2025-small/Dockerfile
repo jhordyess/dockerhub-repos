@@ -2,36 +2,40 @@
 # Image: TexLive 2025 (small) with Git, Zsh and Oh My Zsh; default user: jhordyess
 # Author: Jhordy Gavinchu
 # Docker Hub: https://hub.docker.com/r/jhordyess/texlive
-# All sources were reviewed on May 29, 2025
+# All sources were reviewed on May 30, 2025
 
 # Use the latest TexLive 2025 (small) base image
+# Uses Debian 13 as the top-level base image
 FROM texlive/texlive:latest-small
 
 # Define arguments for user configuration
+ARG DEFAULT_USER_NAME=texlive
+ARG DEFAULT_GROUP_NAME=${DEFAULT_USER_NAME}
 ARG USER_NAME=jhordyess
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
 
 # Update and install dependencies
-RUN apt-get update --no-install-recommends && \
-  apt-get upgrade -y && \
-  apt-get autoremove --purge -y && \ 
-  apt-get install -y sudo && \
+RUN apt update --no-install-recommends && \
+  apt upgrade -y && \
+  apt autoremove --purge -y && \ 
+  apt install -y sudo \
   # Install Oh My Zsh dependencies
-  apt-get install -y git wget zsh \ 
+  git wget zsh \
   # Install SSH client to support remote git repositories
   openssh-client
 
-# Add a non-root user and grant sudo privileges
+# Modify the default user and group names
+RUN usermod -l $USER_NAME -d /home/$USER_NAME -m $DEFAULT_USER_NAME && \
+  groupmod -n $USER_NAME $DEFAULT_GROUP_NAME
+
+# Grant sudo privileges
 # Source: https://code.visualstudio.com/remote/advancedcontainers/add-nonroot-user#_creating-a-nonroot-user
-RUN groupadd --gid $USER_GID $USER_NAME && \
-  useradd --uid $USER_UID --gid $USER_GID -m $USER_NAME && \
-  echo $USER_NAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USER_NAME && \
+RUN echo $USER_NAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USER_NAME && \
   chmod 0440 /etc/sudoers.d/$USER_NAME
 
 # Install latexindent and latexmk for use with the VSCode LaTeX Workshop extension.
 # Create symbolic links to make them available in /usr/local/bin
-RUN tlmgr install latexindent latexmk && \
+RUN tlmgr update --self && \
+  tlmgr install latexindent latexmk && \
   ln -s /usr/local/texlive/2025/texmf-dist/scripts/latexindent/latexindent.pl /usr/local/bin/latexindent && \
   ln -s /usr/local/texlive/2025/texmf-dist/scripts/latexmk/latexmk.pl /usr/local/bin/latexmk
 

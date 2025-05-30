@@ -2,25 +2,27 @@
 # Image: Ubuntu 24.04 (Noble Numbat) with Git, Zsh, and Oh My Zsh; default user: jhordyess
 # Author: Jhordy Gavinchu
 # Docker Hub: https://hub.docker.com/r/jhordyess/ubuntu
-# All sources were reviewed on May 29, 2025
+# All sources were reviewed on May 30, 2025
 
 # Use the Ubuntu 24.04 base image
 FROM ubuntu:24.04
 
 # Define arguments for user configuration
 ARG DEFAULT_USER_NAME=ubuntu
+ARG DEFAULT_GROUP_NAME=$DEFAULT_USER_NAME
 ARG USER_NAME=jhordyess
 
 # Update and install dependencies
-RUN apt-get update --no-install-recommends && \
-  apt-get upgrade -y && \
-  apt-get autoremove --purge -y && \ 
-  apt-get install -y sudo && \
+RUN apt update --no-install-recommends && \
+  apt upgrade -y && \
+  apt autoremove --purge -y && \ 
+  apt install -y sudo \
   # Install Oh My Zsh dependencies
-  apt-get install -y git wget zsh
+  git wget zsh
 
-# Rename the default user, note that the 1000 GUID is also "ubuntu"
-RUN usermod -l $USER_NAME -d /home/$USER_NAME -m $DEFAULT_USER_NAME
+# Modify the default user and group names
+RUN usermod -l $USER_NAME -d /home/$USER_NAME -m $DEFAULT_USER_NAME && \
+  groupmod -n $USER_NAME $DEFAULT_GROUP_NAME
 
 # Grant sudo privileges
 # Source: https://code.visualstudio.com/remote/advancedcontainers/add-nonroot-user#_creating-a-nonroot-user
