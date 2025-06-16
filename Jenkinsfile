@@ -1,3 +1,8 @@
+/**
+ * Jenkins Plugins required who are not installed with the suggested plugins:
+ * - Pipeline Utility Steps (pipeline-utility-steps) Plugin
+ * - Docker Pipeline (docker-workflow) Plugin
+ */
 pipeline {
   agent any
 
