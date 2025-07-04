@@ -8,46 +8,52 @@ pipeline {
 
   environment {
     REPOSITORIES_JSON = '[{"name": "java", "version": "21-3"}, {"name": "texlive", "version": "2025-small"}, {"name": "ubuntu", "version": "24.04"}]'
+    DOCKER_USERNAME = credentials('docker-login')
+    DOCKER_PASSWORD = credentials('docker-login')
   }
 
   stages {
-    stage('Build and Push Docker Images') {
+    stage('Login to DockerHub') {
+      steps {
+        sh "echo ${env.DOCKER_PASSWORD} | docker login -u ${env.DOCKER_USERNAME} --password-stdin"
+      }
+    }
+
+    stage('Build, Tag, and Push Images') {
       steps {
         script {
           def repositories = readJSON text: env.REPOSITORIES_JSON
+          repositories.each { repo ->
+            def name = repo.name
+            def version = repo.version
+            def path = "${name}/${version}"
+            def prefix = "${env.DOCKER_USERNAME}/${name}"
+            def tag = "${prefix}:${version}"
+            def latestTag = "${prefix}:latest"
 
-          withCredentials([usernamePassword(credentialsId: 'docker-login',
-            passwordVariable: 'DOCKER_PASSWORD',
-            usernameVariable: 'DOCKER_USERNAME')]) {
+            stage("Build: ${tag}") {
+              sh "docker build -t ${tag} --pull --no-cache ./${path}"
+            }
+
+            stage("Tag: ${tag} and ${latestTag}") {
+              sh "docker tag ${tag} ${latestTag}"
+            }
+
+            stage("Push: ${tag}") {
+              sh "docker push ${tag}"
+            }
             
-            try {
-              sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
-              
-              repositories.each { repo ->
-                def name = repo.name
-                def version = repo.version
-                def path = "${name}/${version}"
-                def prefix = "${DOCKER_USERNAME}/${name}"
-                def tag = "${prefix}:${version}"
-                def latestTag = "${prefix}:latest"
-
-                echo "Building Docker image for '${path}'..."
-                sh "docker build -t ${tag} --pull --no-cache ./${path}"
-
-                echo "Tagging Docker image with '${latestTag}'..."
-                sh "docker tag ${tag} ${latestTag}"
-
-                echo "Pushing Docker image as '${tag}'..."
-                sh "docker push ${tag}"
-
-                echo "Pushing Docker image as '${latestTag}'..."
-                sh "docker push ${latestTag}"
-              }
-            } finally {
-              sh "docker logout"
+            stage("Push: ${latestTag}") {
+              sh "docker push ${latestTag}"
             }
           }
         }
+      }
+    }
+
+    stage('Logout from DockerHub') {
+      steps {
+        sh "docker logout"
       }
     }
   }
