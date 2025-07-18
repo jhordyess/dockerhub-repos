@@ -8,43 +8,45 @@ pipeline {
 
   environment {
     REPOSITORIES_JSON = '[{"name": "java", "version": "21-3"}, {"name": "texlive", "version": "2025-small"}, {"name": "ubuntu", "version": "24.04"}]'
-    DOCKER_USERNAME = credentials('docker-login')
-    DOCKER_PASSWORD = credentials('docker-login')
   }
 
   stages {
     stage('Login to DockerHub') {
       steps {
-        sh "echo ${env.DOCKER_PASSWORD} | docker login -u ${env.DOCKER_USERNAME} --password-stdin"
+        withCredentials([usernamePassword(credentialsId: 'docker-login', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+          sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
+        }
       }
     }
 
     stage('Build, Tag, and Push Images') {
       steps {
-        script {
-          def repositories = readJSON text: env.REPOSITORIES_JSON
-          repositories.each { repo ->
-            def name = repo.name
-            def version = repo.version
-            def path = "${name}/${version}"
-            def prefix = "${env.DOCKER_USERNAME}/${name}"
-            def tag = "${prefix}:${version}"
-            def latestTag = "${prefix}:latest"
+        withCredentials([usernamePassword(credentialsId: 'docker-login', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+          script {
+            def repositories = readJSON text: env.REPOSITORIES_JSON
+            repositories.each { repo ->
+              def name = repo.name
+              def version = repo.version
+              def path = "${name}/${version}"
+              def prefix = "\$DOCKER_USERNAME/${name}"
+              def tag = "${prefix}:${version}"
+              def latestTag = "${prefix}:latest"
 
-            stage("Build: ${tag}") {
-              sh "docker build -t ${tag} --pull --no-cache ./${path}"
-            }
+              stage("Build: ${tag}") {
+                sh "docker build -t ${tag} --pull --no-cache ./${path}"
+              }
 
-            stage("Tag: ${tag} and ${latestTag}") {
-              sh "docker tag ${tag} ${latestTag}"
-            }
+              stage("Tag: ${tag} and ${latestTag}") {
+                sh "docker tag ${tag} ${latestTag}"
+              }
 
-            stage("Push: ${tag}") {
-              sh "docker push ${tag}"
-            }
-            
-            stage("Push: ${latestTag}") {
-              sh "docker push ${latestTag}"
+              stage("Push: ${tag}") {
+                sh "docker push ${tag}"
+              }
+              
+              stage("Push: ${latestTag}") {
+                sh "docker push ${latestTag}"
+              }
             }
           }
         }
